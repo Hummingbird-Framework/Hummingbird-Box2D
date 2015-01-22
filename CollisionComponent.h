@@ -1,12 +1,13 @@
 #ifndef HB_COLLISION_COMPONENT_H
 #define HB_COLLISION_COMPONENT_H
+#include <memory>
 #include <Box2D/Box2D.h>
 #include "../Hummingbird-Base/DataComponent.h"
 #include "../Hummingbird-Base/Transform.h"
 
 namespace hb
 {
-	class CollisionComponent : public DataComponent<b2Body*>, public Transform
+	class CollisionComponent : public DataComponent<std::unique_ptr<b2Body>>, public Transform
 	{
 	public:
 		CollisionComponent(b2Body* b, b2World* w);

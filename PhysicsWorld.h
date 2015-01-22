@@ -11,9 +11,13 @@ namespace hb
 		PhysicsWorld();
 		static PhysicsWorld* instance();
 
+		const b2World* getWorld();
+
 		void setGravity(Vector3d g);
+		const Vector3d getGravity();
 
 	private:
+		static PhysicsWorld* s_instance;
 		b2World* world;
 	};
 }
