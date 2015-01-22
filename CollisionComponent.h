@@ -4,13 +4,14 @@
 #include <Box2D/Box2D.h>
 #include "../Hummingbird-Base/DataComponent.h"
 #include "../Hummingbird-Base/Transform.h"
+#include "PhysicsWorld.h"
 
 namespace hb
 {
-	class CollisionComponent : public DataComponent<std::unique_ptr<b2Body>>, public Transform
+	class CollisionComponent : public DataComponent<b2Body*>, public Transform
 	{
 	public:
-		CollisionComponent(b2Body* b, b2World* w);
+		CollisionComponent(b2Body* b);
 		virtual ~CollisionComponent() override;
 		
 		void setBody(b2Body* b);
@@ -21,7 +22,6 @@ namespace hb
 		void preUpdate() override;
 
 	private:
-		b2World* world;
 		Vector3d pos;
 	};
 }

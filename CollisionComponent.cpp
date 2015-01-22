@@ -2,15 +2,14 @@
 
 using namespace hb;
 
-CollisionComponent::CollisionComponent(b2Body* b, b2World* w):
-DataComponent<b2Body*>(b),
-world(w)
+CollisionComponent::CollisionComponent(b2Body* b):
+DataComponent<b2Body*>(b)
 {}
 
 
 CollisionComponent::~CollisionComponent()
 {
-	world->DestroyBody(getData());
+	PhysicsWorld::instance()->getWorld()->DestroyBody(getData());
 }
 
 
