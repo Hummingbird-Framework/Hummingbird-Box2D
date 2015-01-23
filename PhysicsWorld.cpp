@@ -5,6 +5,7 @@ using namespace hb;
 PhysicsWorld::PhysicsWorld(b2Vec2 gravity)
 {
 	world = new b2World(gravity);
+	world->SetContactListener(this);
 }
 
 
@@ -45,4 +46,15 @@ const Vector2d PhysicsWorld::getGravity()
 b2Body* PhysicsWorld::addBody(b2BodyDef* bd)
 {
 	return world->CreateBody(bd);
+}
+
+
+void PhysicsWorld::BeginContact(b2Contact* contact)
+{
+	CollisionComponent* cA = (CollisionComponent*) contact->GetFixtureA()->GetBody()->GetUserData();
+	CollisionComponent* cB = (CollisionComponent*) contact->GetFixtureB()->GetBody()->GetUserData();
+
+
+	cA->addCollision(cB);
+	cB->addCollision(cA);
 }

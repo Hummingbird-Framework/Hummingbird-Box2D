@@ -2,6 +2,7 @@
 #define HB_COLLISION_COMPONENT_H
 #include <memory>
 #include <Box2D/Box2D.h>
+#include <queue>
 #include "../Hummingbird-Base/DataComponent.h"
 #include "../Hummingbird-Base/Transform.h"
 #include "PhysicsWorld.h"
@@ -17,12 +18,17 @@ namespace hb
 		void setBody(b2Body* b);
 		const b2Body* getBody() const;
 
+		std::queue<CollisionComponent*> getCollisionQueue();
 		const Vector3d getPosition();
 
+		void addCollision(CollisionComponent* b);
+
 		void preUpdate() override;
+		void postUpdate() override;
 
 	private:
 		Vector3d pos;
+		std::queue<CollisionComponent*> cqueue;
 	};
 }
 #endif

@@ -4,7 +4,9 @@ using namespace hb;
 
 CollisionComponent::CollisionComponent(b2Body* b):
 DataComponent<b2Body*>(b)
-{}
+{
+	b->SetUserData(this);
+}
 
 
 CollisionComponent::~CollisionComponent()
@@ -16,6 +18,12 @@ CollisionComponent::~CollisionComponent()
 void CollisionComponent::setBody(b2Body* b)
 {
 	setData(b);
+}
+
+
+std::queue<CollisionComponent*> CollisionComponent::getCollisionQueue()
+{
+	return cqueue;
 }
 
 
@@ -31,8 +39,20 @@ const Vector3d CollisionComponent::getPosition()
 }
 
 
+void CollisionComponent::addCollision(CollisionComponent* b)
+{
+	cqueue.push(b);
+}
+
+
 void CollisionComponent::preUpdate()
 {
 	b2Body* b = getData();
 	pos = Vector3d(b->GetPosition().x, b->GetPosition().y, 0);
+}
+
+
+void CollisionComponent::postUpdate()
+{
+	while (!cqueue.empty()) cqueue.pop();
 }

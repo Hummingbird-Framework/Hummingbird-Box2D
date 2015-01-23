@@ -2,10 +2,11 @@
 #define HB_PHYSICS_WORLD_H
 #include <Box2D/Box2D.h>
 #include "../Hummingbird-Base/Vector2d.h"
+#include "CollisionComponent.h"
 
 namespace hb
 {
-	class PhysicsWorld
+	class PhysicsWorld : public b2ContactListener
 	{
 	public:
 		PhysicsWorld(b2Vec2 gravity);
@@ -18,6 +19,8 @@ namespace hb
 		const Vector2d getGravity();
 
 		b2Body* addBody(b2BodyDef* bd);
+
+		void BeginContact(b2Contact *contact);
 
 	private:
 		static PhysicsWorld* s_instance;
