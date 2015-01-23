@@ -58,3 +58,9 @@ void PhysicsWorld::BeginContact(b2Contact* contact)
 	cA->addCollision(cB);
 	cB->addCollision(cA);
 }
+
+
+void PhysicsWorld::update()
+{
+	world->Step(Time::deltaTime.asSeconds(), 8, 3);
+}

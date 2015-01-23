@@ -2,6 +2,7 @@
 #define HB_PHYSICS_WORLD_H
 #include <Box2D/Box2D.h>
 #include "../Hummingbird-Base/Vector2d.h"
+#include "../Hummingbird-Base/Time.h"
 #include "CollisionComponent.h"
 
 namespace hb
@@ -21,6 +22,8 @@ namespace hb
 		b2Body* addBody(b2BodyDef* bd);
 
 		void BeginContact(b2Contact *contact);
+
+		void update();
 
 	private:
 		static PhysicsWorld* s_instance;
