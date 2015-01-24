@@ -1,6 +1,7 @@
 #include "PhysicsWorld.h"
-
 using namespace hb;
+
+PhysicsWorld* PhysicsWorld::s_instance = nullptr;
 
 PhysicsWorld::PhysicsWorld(b2Vec2 gravity)
 {
@@ -11,7 +12,7 @@ PhysicsWorld::PhysicsWorld(b2Vec2 gravity)
 
 PhysicsWorld* PhysicsWorld::instance()
 {
-	if (s_instance == NULL)
+	if (s_instance == nullptr)
 		s_instance = new PhysicsWorld(b2Vec2(0.0, 0.0));
 
 	return s_instance;
