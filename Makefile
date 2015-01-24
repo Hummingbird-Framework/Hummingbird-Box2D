@@ -1,7 +1,6 @@
 CC        := g++
-ARCH      := $(shell getconf LONG_BIT)
 
-CFLAGS    := -std=c++11 -Wall
+CFLAGS    := -std=c++11 -Wall -lBox2D
 
 STATIC_LIB_NAME := Hummingbird-Box2D
 
