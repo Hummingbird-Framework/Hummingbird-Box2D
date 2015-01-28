@@ -1,8 +1,7 @@
 #ifndef HB_PHYSICS_WORLD_H
 #define HB_PHYSICS_WORLD_H
 #include <Box2D/Box2D.h>
-#include "../Hummingbird-Base/Vector2d.h"
-#include "../Hummingbird-Base/Time.h"
+#include "../Base.h"
 #include "CollisionComponent.h"
 
 namespace hb

@@ -3,8 +3,7 @@
 #include <memory>
 #include <Box2D/Box2D.h>
 #include <queue>
-#include "../Hummingbird-Base/DataComponent.h"
-#include "../Hummingbird-Base/Transform.h"
+#include "../Base.h"
 #include "PhysicsWorld.h"
 
 namespace hb
